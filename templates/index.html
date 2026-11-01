@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Smart Flight Booking with Agentic AI | Author: Abdul : Full Stack - AI Engineer -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1220">
+    <meta name="description" content="Smart Flight Booking with Agentic AI — intelligent flight research, hotel discovery and itinerary planning.">
+    <title>Smart Flight Booking with Agentic AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+
+<header class="topbar">
+    <a class="brand" href="/" aria-label="Smart Flight Booking home">
+        <span class="brand-mark">✈</span>
+        <span>
+            <strong>Smart Flight Booking</strong>
+            <small>with Agentic AI</small>
+        </span>
+    </a>
+    <div class="topbar-meta">
+        <span class="secure-pill"><i></i> AI SYSTEM ONLINE</span>
+        <span class="author">Abdul · Full Stack - AI Engineer</span>
+    </div>
+</header>
+
+<main class="shell">
+    <section class="hero">
+        <div class="eyebrow">AGENTIC TRAVEL INTELLIGENCE</div>
+        <h1>Book smarter.<br><span>Travel better.</span></h1>
+        <p>Describe your trip in natural language. Our Agentic AI coordinates flight intelligence, hotel research and itinerary planning in one workflow.</p>
+        <div class="trust-row">
+            <span>✓ Flight intelligence</span>
+            <span>✓ Hotel research</span>
+            <span>✓ Day-by-day planning</span>
+            <span>✓ Persistent conversations</span>
+        </div>
+    </section>
+
+    <section class="workspace">
+        <div class="workspace-head">
+            <div>
+                <span class="section-label">TRAVEL REQUEST</span>
+                <h2>Tell us where you're going</h2>
+            </div>
+            <button class="ghost-btn" type="button" onclick="newConversation()" title="Start a new conversation">＋ New trip</button>
+        </div>
+
+        <div class="composer">
+            <label for="userInput">Your trip details</label>
+            <textarea id="userInput" maxlength="4000"
+                placeholder="Example: Find the best flight options from Delhi to Tokyo for 7 days in March, recommend good hotels, and build a day-by-day itinerary under ₹1.5 lakh."></textarea>
+            <div class="composer-footer">
+                <span id="charCount">0 / 4000</span>
+                <span class="shortcut">⌘ / Ctrl + Enter to generate</span>
+            </div>
+        </div>
+
+        <div class="quick-prompts" aria-label="Suggested requests">
+            <button onclick="setPrompt('Find the best flight options from Delhi to Dubai for 5 days and build a complete travel plan.')">Dubai · 5 days</button>
+            <button onclick="setPrompt('Plan a 7-day Japan trip from Delhi with flight options, hotels, sightseeing and an estimated budget.')">Japan · 7 days</button>
+            <button onclick="setPrompt('Plan a premium 6-day Singapore trip with flight options, hotels and a practical itinerary.')">Singapore · Premium</button>
+            <button onclick="setPrompt('Find flight information for a trip from Delhi to London and recommend hotels and a 7-day itinerary.')">London · 7 days</button>
+        </div>
+
+        <div class="action-row">
+            <div class="workflow-note"><span class="pulse"></span> Multi-agent workflow ready</div>
+            <button id="sendBtn" class="primary-btn" type="button" onclick="sendMessage()">
+                <span id="btnText">Generate smart trip plan <b>→</b></span>
+                <span id="btnLoader" class="loader hidden"></span>
+            </button>
+        </div>
+    </section>
+
+    <section id="progressSection" class="progress-section hidden" aria-live="polite">
+        <div class="progress-top">
+            <span>Agentic AI workflow</span><strong id="progressText">Analyzing request…</strong>
+        </div>
+        <div class="progress-track"><span id="progressBar"></span></div>
+        <div class="agent-steps">
+            <span id="step-flight">01 · Flights</span>
+            <span id="step-hotel">02 · Hotels</span>
+            <span id="step-itinerary">03 · Itinerary</span>
+            <span id="step-final">04 · Booking advisor</span>
+        </div>
+    </section>
+
+    <section id="resultSection" class="result-section hidden">
+        <div class="result-toolbar">
+            <div>
+                <span class="section-label">AI TRAVEL BRIEF</span>
+                <h2>Your smart trip plan</h2>
+                <p id="threadInfo">Conversation ID: —</p>
+            </div>
+            <div class="result-actions">
+                <button class="secondary-btn copy-btn" type="button" onclick="copyResult()">Copy</button>
+                <button class="secondary-btn download-btn" type="button" onclick="downloadPDF()">Export PDF</button>
+            </div>
+        </div>
+        <div id="pdfContent" class="pdf-content">
+            <div class="pdf-brand">Smart Flight Booking with Agentic AI</div>
+            <div id="resultBox" class="result-box"></div>
+        </div>
+        <div class="result-footnote">AI-generated travel guidance. Verify live availability, fare rules and booking terms with the provider before payment.</div>
+    </section>
+
+    <section id="errorBox" class="error-box hidden" role="alert"></section>
+</main>
+
+<footer>
+    <div><strong>Smart Flight Booking with Agentic AI</strong> · Agentic travel planning platform</div>
+    <div>Author: Abdul : Full Stack - AI Engineer</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="/static/script.js"></script>
+</body>
+</html>
